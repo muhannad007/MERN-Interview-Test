@@ -58,6 +58,7 @@ const Board = () => {
     }
     if (res.ok) {
       console.log("New image added");
+      clearBoard();
     }
   };
 
