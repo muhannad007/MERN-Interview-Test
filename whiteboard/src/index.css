@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap");
+
+/* layout */
+:root {
+  --primary: #1aac83;
+  --error: #e7195a;
+}
+body {
+  /* background: #f1f1f1; */
+  background: #abc5ff;
+  margin: 0;
+  font-family: "Poppins";
+  transition: all 0.2s;
+}
+/* a {
+  transition: all 0.2s;
+} */
+header {
+  background: #fff;
+  margin-bottom: 1em;
+}
+header .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1px 20px;
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+header a {
+  margin-right: 2em;
+  color: #333;
+  text-decoration: none;
+}
+.pages {
+  max-width: 1400px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.board {
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  width: 800px;
+  height: 400px;
+  background-color: white;
+  margin: 0 auto;
+}
+
+.board button,
+.board select {
+  font-size: 1.5rem;
+  border: none;
+  font-family: "Poppins";
+  border-radius: 5px;
+  margin-top: 1em;
+}
+.board button {
+  cursor: pointer;
+  margin-left: 2em;
+  background-color: var(--primary);
+}
+.board select {
+  background-color: var(--error);
+}
+.board label {
+  font-size: 1.5rem;
+  margin-left: 2em;
+}
+.board input {
+  border-radius: 5px;
+  height: 2em;
+  margin-left: 0.5em;
+  border: none;
+  padding-top: 5px;
+}
+
+@media (min-width: 800px) {
+  .drawings {
+    margin: 0 auto;
+    display: grid;
+    grid-template-areas: ". . .";
+  }
+  .drawing-details {
+    width: 100%;
+  }
+}
+.drawings {
+  display: grid;
+}
+.drawing-details {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 2em;
+  background: white;
+  text-align: center;
+  height: 500px;
+  border: 1px solid #eee;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.03);
+  border-radius: 5px;
+  cursor: pointer;
+}
+.drawing-details img {
+  width: 90%;
+  margin-bottom: 2em;
+}
+.drawing-details:hover {
+  transition: all 0.2s;
+  transform: translatey(-2em);
+}
+a {
+  text-decoration: none;
+}
+
+.single-drawing {
+  width: 50%;
+  height: 50%;
+  margin: 0 auto;
+  margin-bottom: 2em;
+  background: white;
+  text-align: center;
+  border: 1px solid #eee;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.03);
+  border-radius: 5px;
+}
+.single-drawing img {
+  width: 90%;
+  margin-bottom: 2em;
+}
