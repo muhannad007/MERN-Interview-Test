@@ -7,7 +7,7 @@ const Drawings = () => {
   const [drawings, setDrawings] = useState(null);
   useEffect(() => {
     const fetshDrawings = async () => {
-      const res = await fetch("/api/workouts/");
+      const res = await fetch("/api/drawings/");
       const json = await res.json();
 
       if (res.ok) {

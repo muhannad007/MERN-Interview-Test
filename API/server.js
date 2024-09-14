@@ -32,4 +32,4 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/api/workouts", router);
+app.use("/api/drawings", router);

@@ -44,7 +44,7 @@ const Board = () => {
     const uri = stageRef.current.toDataURL();
     console.log(uri);
     const data = { title: title, shape: uri };
-    const res = await fetch("/api/workouts", {
+    const res = await fetch("/api/drawings", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
