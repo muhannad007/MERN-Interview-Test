@@ -1,6 +1,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
+const compression = require("compression");
 const router = require("./routes/Routes");
 require("dotenv").config();
 
@@ -25,6 +26,7 @@ mongoose
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(compression());
 app.use(morgan("dev"));
 
 app.use((req, res, next) => {
