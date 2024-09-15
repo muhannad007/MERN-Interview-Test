@@ -1,27 +1,26 @@
 import React, { useState } from "react";
-import { Stage, Layer, Rect } from "react-konva";
+import { Stage, Layer, Circle } from "react-konva";
 
 const DrawCircle = ({ stageRef }) => {
   const [circles, setCircles] = useState([]);
-  const [newcircle, setNewCircle] = useState([]);
+  const [newCircle, setNewCircle] = useState([]);
 
   const handleMouseDown = (event) => {
-    if (newcircle.length === 0) {
+    if (newCircle.length === 0) {
       const { x, y } = event.target.getStage().getPointerPosition();
-      setNewCircle([{ x, y, width: 0, height: 0, key: "0" }]);
+      setNewCircle([{ x, y, redius: 0, key: "0" }]);
     }
   };
 
   const handleMouseUp = (event) => {
-    if (newcircle.length === 1) {
-      const sx = newcircle[0].x;
-      const sy = newcircle[0].y;
+    if (newCircle.length === 1) {
+      const sx = newCircle[0].x;
+      const sy = newCircle[0].y;
       const { x, y } = event.target.getStage().getPointerPosition();
       const circleToAdd = {
         x: sx,
         y: sy,
-        width: x - sx,
-        height: y - sy,
+        radius: Math.sqrt(Math.pow(x - sx, 2) + Math.pow(y - sy, 2)),
         key: circles.length + 1,
       };
       circles.push(circleToAdd);
@@ -31,23 +30,22 @@ const DrawCircle = ({ stageRef }) => {
   };
 
   const handleMouseMove = (event) => {
-    if (newcircle.length === 1) {
-      const sx = newcircle[0].x;
-      const sy = newcircle[0].y;
+    if (newCircle.length === 1) {
+      const sx = newCircle[0].x;
+      const sy = newCircle[0].y;
       const { x, y } = event.target.getStage().getPointerPosition();
       setNewCircle([
         {
           x: sx,
           y: sy,
-          width: x - sx,
-          height: y - sy,
+          radius: Math.sqrt(Math.pow(x - sx, 2) + Math.pow(y - sy, 2)),
           key: "0",
         },
       ]);
     }
   };
 
-  const circlesToDraw = [...circles, ...newcircle];
+  const circlesToDraw = [...circles, ...newCircle];
   return (
     <Stage
       onMouseDown={handleMouseDown}
@@ -60,13 +58,12 @@ const DrawCircle = ({ stageRef }) => {
       <Layer>
         {circlesToDraw.map((value) => {
           return (
-            <Rect
+            <Circle
               x={value.x}
               y={value.y}
-              width={value.width}
-              height={value.height}
+              radius={value.radius}
               fill="transparent"
-              stroke="black"
+              stroke="back"
             />
           );
         })}

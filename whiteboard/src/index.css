@@ -128,3 +128,17 @@ a {
   width: 90%;
   margin-bottom: 2em;
 }
+
+.delete-button {
+  all: unset;
+  font-family: "Poppins";
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 0.5em 2em 0.5em 2em;
+  background-color: #abc5ff;
+}
+.delete-button:hover {
+  background-color: #5f91ff;
+  cursor: pointer;
+  box-shadow: 0 0 20px black;
+}

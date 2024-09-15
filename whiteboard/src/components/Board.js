@@ -1,16 +1,7 @@
 import { useState, useRef } from "react";
 import { Stage, Layer, Line } from "react-konva";
 import DrawRect from "../tools/DrawRect";
-
-// function downloadURI(uri, name) {
-//   var link = document.createElement("a");
-//   link.download = name;
-//   // "E:\\Muhannad\\WORK\\OntikTechnology\\whiteboard\\public"
-//   link.href = uri;
-//   document.body.appendChild(link);
-//   link.click();
-//   document.body.removeChild(link);
-// }
+import DrawCircle from "../tools/DrawCircle";
 
 const Board = () => {
   const [tool, setTool] = useState("pen");
@@ -63,6 +54,7 @@ const Board = () => {
     }
     if (res.ok) {
       console.log("New image added");
+      alert("Saved successfully");
       clearBoard();
     }
   };
@@ -70,8 +62,11 @@ const Board = () => {
   const clearBoard = () => {
     setLines([]);
   };
+
   if (tool === "rectangle") {
     layer = <DrawRect stageRef={stageRef} />;
+  } else if (tool === "circle") {
+    layer = <DrawCircle stageRef={stageRef} />;
   } else {
     layer = (
       <Stage
@@ -112,6 +107,7 @@ const Board = () => {
       >
         <option value="pen">Pen</option>
         <option value="rectangle">Rectangle</option>
+        <option value="circle">Circle</option>
         <option value="eraser">Eraser</option>
       </select>
       <button onClick={() => handleSubmit(title)}>save</button>

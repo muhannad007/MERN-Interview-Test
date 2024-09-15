@@ -46,7 +46,9 @@ const DrawingDetails = () => {
     <div className="single-drawing">
       <img src={singleDrawing.shape} alt={singleDrawing.title} />
       <h2>{singleDrawing.title}</h2>
-      <button onClick={() => handleClick()}>Delete</button>
+      <button className="delete-button" onClick={() => handleClick()}>
+        Delete
+      </button>
     </div>
   );
 };
