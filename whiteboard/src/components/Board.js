@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { Stage, Layer, Line } from "react-konva";
+import DrawRect from "../tools/DrawRect";
 
 // function downloadURI(uri, name) {
 //   var link = document.createElement("a");
@@ -17,6 +18,7 @@ const Board = () => {
   const [title, setTitle] = useState("");
   const isDrawing = useRef(false);
   const stageRef = useRef(null);
+  let layer = "";
 
   const handleMouseDown = (e) => {
     isDrawing.current = true;
@@ -68,9 +70,10 @@ const Board = () => {
   const clearBoard = () => {
     setLines([]);
   };
-
-  return (
-    <div className="board">
+  if (tool === "rectangle") {
+    layer = <DrawRect stageRef={stageRef} />;
+  } else {
+    layer = (
       <Stage
         width={800}
         height={400}
@@ -80,7 +83,6 @@ const Board = () => {
         ref={stageRef}
       >
         <Layer>
-          {/* <Text text="Wite Board App" x={5} y={30} /> */}
           {lines.map((line, i) => (
             <Line
               key={i}
@@ -97,6 +99,11 @@ const Board = () => {
           ))}
         </Layer>
       </Stage>
+    );
+  }
+  return (
+    <div className="board">
+      {layer}
       <select
         value={tool}
         onChange={(e) => {
@@ -104,6 +111,7 @@ const Board = () => {
         }}
       >
         <option value="pen">Pen</option>
+        <option value="rectangle">Rectangle</option>
         <option value="eraser">Eraser</option>
       </select>
       <button onClick={() => handleSubmit(title)}>save</button>

@@ -1,41 +1,41 @@
 import React, { useState } from "react";
 import { Stage, Layer, Rect } from "react-konva";
 
-const DrawRect = ({ stageRef }) => {
-  const [rectangles, setRectangles] = useState([]);
-  const [newRectangle, setNewRectangle] = useState([]);
+const DrawCircle = ({ stageRef }) => {
+  const [circles, setCircles] = useState([]);
+  const [newcircle, setNewCircle] = useState([]);
 
   const handleMouseDown = (event) => {
-    if (newRectangle.length === 0) {
+    if (newcircle.length === 0) {
       const { x, y } = event.target.getStage().getPointerPosition();
-      setNewRectangle([{ x, y, width: 0, height: 0, key: "0" }]);
+      setNewCircle([{ x, y, width: 0, height: 0, key: "0" }]);
     }
   };
 
   const handleMouseUp = (event) => {
-    if (newRectangle.length === 1) {
-      const sx = newRectangle[0].x;
-      const sy = newRectangle[0].y;
+    if (newcircle.length === 1) {
+      const sx = newcircle[0].x;
+      const sy = newcircle[0].y;
       const { x, y } = event.target.getStage().getPointerPosition();
-      const rectangleToAdd = {
+      const circleToAdd = {
         x: sx,
         y: sy,
         width: x - sx,
         height: y - sy,
-        key: rectangles.length + 1,
+        key: circles.length + 1,
       };
-      rectangles.push(rectangleToAdd);
-      setNewRectangle([]);
-      setRectangles(rectangles);
+      circles.push(circleToAdd);
+      setNewCircle([]);
+      setCircles(circles);
     }
   };
 
   const handleMouseMove = (event) => {
-    if (newRectangle.length === 1) {
-      const sx = newRectangle[0].x;
-      const sy = newRectangle[0].y;
+    if (newcircle.length === 1) {
+      const sx = newcircle[0].x;
+      const sy = newcircle[0].y;
       const { x, y } = event.target.getStage().getPointerPosition();
-      setNewRectangle([
+      setNewCircle([
         {
           x: sx,
           y: sy,
@@ -47,7 +47,7 @@ const DrawRect = ({ stageRef }) => {
     }
   };
 
-  const rectanglesToDraw = [...rectangles, ...newRectangle];
+  const circlesToDraw = [...circles, ...newcircle];
   return (
     <Stage
       onMouseDown={handleMouseDown}
@@ -58,7 +58,7 @@ const DrawRect = ({ stageRef }) => {
       ref={stageRef}
     >
       <Layer>
-        {rectanglesToDraw.map((value) => {
+        {circlesToDraw.map((value) => {
           return (
             <Rect
               x={value.x}
@@ -75,4 +75,4 @@ const DrawRect = ({ stageRef }) => {
   );
 };
 
-export default DrawRect;
+export default DrawCircle;
