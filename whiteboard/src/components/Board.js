@@ -44,13 +44,16 @@ const Board = () => {
     const uri = stageRef.current.toDataURL();
     console.log(uri);
     const data = { title: title, shape: uri };
-    const res = await fetch("/api/drawings", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const res = await fetch(
+      "https://mern-interview-test-77pc.onrender.com/api/drawings",
+      {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const json = await res.json();
     console.log(json);
     if (!res.ok) {

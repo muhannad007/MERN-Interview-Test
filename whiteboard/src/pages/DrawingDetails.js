@@ -7,9 +7,12 @@ const DrawingDetails = () => {
   const [singleDrawing, setSingleDrawing] = useState("");
 
   const handleClick = async () => {
-    const res = await fetch("/api/drawings/" + id, {
-      method: "DELETE",
-    });
+    const res = await fetch(
+      "https://mern-interview-test-77pc.onrender.com/api/drawings/" + id,
+      {
+        method: "DELETE",
+      }
+    );
     const json = await res.json();
     console.log(json);
 
@@ -21,7 +24,9 @@ const DrawingDetails = () => {
   useEffect(() => {
     const fetshDrawing = async () => {
       try {
-        const res = await fetch("/api/drawings/" + id);
+        const res = await fetch(
+          "https://mern-interview-test-77pc.onrender.com/api/drawings/" + id
+        );
         const json = await res.json();
         // console.log(json);
 

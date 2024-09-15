@@ -7,7 +7,9 @@ const Drawings = () => {
   const [drawings, setDrawings] = useState(null);
   useEffect(() => {
     const fetshDrawings = async () => {
-      const res = await fetch("/api/drawings/");
+      const res = await fetch(
+        "https://mern-interview-test-77pc.onrender.com/api/drawings/"
+      );
       const json = await res.json();
 
       if (res.ok) {
